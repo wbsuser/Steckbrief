@@ -4,6 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#102a43">
+  <meta name="description" content="Interaktive Mini-Software der Gruppe Rhein zum Erstellen eines KI-Use-Case-Steckbriefs.">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
   <title>GRUPPE RHEIN – Use-Case-Steckbrief</title>
   <script>
     (() => {
@@ -871,6 +876,14 @@
 
       updateActHint();
       updateThemeControl();
+
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js').catch(() => {
+            setStatus('Offline-Funktionen konnten nicht aktiviert werden.', true);
+          });
+        });
+      }
     })();
   </script>
 </body>
