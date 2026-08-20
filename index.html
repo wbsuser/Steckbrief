@@ -126,11 +126,24 @@
       margin-bottom: 28px;
     }
 
+    .hero-main {
+      display: grid;
+      grid-template-columns: minmax(180px, 320px) minmax(0, 1fr);
+      gap: 28px;
+      align-items: center;
+    }
+
     .hero-logo {
       display: block;
       width: min(100%, 320px);
-      margin: 0 0 18px;
+      margin: 0;
       filter: drop-shadow(0 10px 24px rgba(16, 42, 67, .10));
+    }
+
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .eyebrow {
@@ -532,6 +545,8 @@
 
     @media (max-width: 920px) {
       .hero { grid-template-columns: 1fr; }
+      .hero-main { grid-template-columns: 1fr; gap: 18px; }
+      .hero-logo { width: min(100%, 280px); }
       .step-mark { display: none; }
       .layout { grid-template-columns: 1fr; }
       .preview-card { position: static; }
@@ -586,11 +601,13 @@
       </button>
     </div>
     <header class="hero">
-      <div>
+      <div class="hero-main">
         <img class="hero-logo" src="logo-mema.png" alt="MEMA Logo">
-        <p class="eyebrow">GRUPPE RHEIN · Sechs-Fragen-Raster</p>
-        <h1>Use-Case-<br>Steckbrief</h1>
-        <p class="hero-copy">Vom ersten Gedanken zum vorzeigbaren Dokument: sechs Antworten, eine klare Einordnung und eine druckfertige Seite.</p>
+        <div class="hero-text">
+          <p class="eyebrow">GRUPPE RHEIN · Sechs-Fragen-Raster</p>
+          <h1>Use-Case-<br>Steckbrief</h1>
+          <p class="hero-copy">Vom ersten Gedanken zum vorzeigbaren Dokument: sechs Antworten, eine klare Einordnung und eine druckfertige Seite.</p>
+        </div>
       </div>
       <div class="step-mark" aria-hidden="true">10 Minuten<br>bis zum<br>Steckbrief</div>
     </header>
