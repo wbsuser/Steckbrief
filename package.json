@@ -9,7 +9,7 @@
     "prepare:web": "node scripts/prepare-web.mjs",
     "start:electron": "npm run prepare:web && electron .",
     "build:win": "npm run prepare:web && electron-builder --win nsis portable --publish never",
-    "prepare:android": "npm run prepare:web && npx cap add android --no-sync && npx cap sync android"
+    "prepare:android": "npm run prepare:web && npx cap add android && npx cap sync android"
   },
   "build": {
     "appId": "de.wbs.gruppe.rhein.steckbrief",
@@ -18,7 +18,7 @@
       "output": "release"
     },
     "npmRebuild": false,
-    "artifactName": "${productName}-${version}-${arch}-${target}.${ext}",
+    "artifactName": "${productName}-${version}-${arch}.${ext}",
     "executableName": "Use-Case-Steckbrief",
     "files": [
       "dist/**/*",

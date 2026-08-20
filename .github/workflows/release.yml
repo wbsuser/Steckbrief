@@ -45,7 +45,7 @@ jobs:
         run: npm run prepare:web
 
       - name: Add Android platform
-        run: npx cap add android --no-sync
+        run: npx cap add android
 
       - name: Sync Android platform
         run: npx cap sync android
