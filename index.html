@@ -126,6 +126,13 @@
       margin-bottom: 28px;
     }
 
+    .hero-logo {
+      display: block;
+      width: min(100%, 320px);
+      margin: 0 0 18px;
+      filter: drop-shadow(0 10px 24px rgba(16, 42, 67, .10));
+    }
+
     .eyebrow {
       margin: 0 0 8px;
       color: var(--blue);
@@ -438,12 +445,21 @@
     .empty-state strong { display: block; margin-bottom: 7px; color: var(--navy); font-family: Georgia, serif; font-size: 1.35rem; }
 
     .document-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 14px;
       margin-bottom: 34px;
       color: var(--blue);
       font-size: .72rem;
       font-weight: 900;
       letter-spacing: .18em;
       text-transform: uppercase;
+    }
+
+    .document-logo {
+      width: min(240px, 48%);
+      height: auto;
     }
 
     .document-title {
@@ -550,6 +566,7 @@
       .layout { display: block; }
       .card, .preview-card { border: 0; border-radius: 0; box-shadow: none; }
       .output { min-height: 0; padding: 0; }
+      .document-logo { width: 180px; }
       .document-title { font-size: 26pt; }
       .answer { margin-bottom: 12pt; }
       .assessment { margin-top: 18pt; padding-top: 14pt; }
@@ -570,6 +587,7 @@
     </div>
     <header class="hero">
       <div>
+        <img class="hero-logo" src="logo-mema.png" alt="MEMA Logo">
         <p class="eyebrow">GRUPPE RHEIN · Sechs-Fragen-Raster</p>
         <h1>Use-Case-<br>Steckbrief</h1>
         <p class="hero-copy">Vom ersten Gedanken zum vorzeigbaren Dokument: sechs Antworten, eine klare Einordnung und eine druckfertige Seite.</p>
@@ -769,7 +787,10 @@
 
         output.classList.remove('empty');
         output.innerHTML = `
-          <div class="document-brand">GRUPPE RHEIN · Use-Case-Steckbrief</div>
+          <div class="document-brand">
+            <img class="document-logo" src="logo-mema.png" alt="MEMA Logo">
+            <span>GRUPPE RHEIN · Use-Case-Steckbrief</span>
+          </div>
           <h2 class="document-title">${escapeHtml(data.title)}</h2>
           <p class="company">${escapeHtml(data.company)}</p>
           <div class="document-rule"></div>
