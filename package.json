@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "Mini-Software der Gruppe Rhein fuer einen KI-Use-Case-Steckbrief.",
+  "author": "Gruppe Rhein",
   "main": "electron/main.js",
   "scripts": {
     "prepare:web": "node scripts/prepare-web.mjs",
@@ -16,6 +17,9 @@
     "directories": {
       "output": "release"
     },
+    "npmRebuild": false,
+    "artifactName": "${productName}-${version}-${arch}-${target}.${ext}",
+    "executableName": "Use-Case-Steckbrief",
     "files": [
       "dist/**/*",
       "electron/**/*",

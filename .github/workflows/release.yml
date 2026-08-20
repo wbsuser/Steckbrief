@@ -63,6 +63,10 @@ jobs:
 
   build-windows:
     runs-on: windows-latest
+    env:
+      ELECTRON_BUILDER_CACHE: ${{ github.workspace }}\\.cache\\electron-builder
+      LOCALAPPDATA: ${{ github.workspace }}\\.localappdata
+      NPM_CONFIG_CACHE: ${{ github.workspace }}\\.npm-cache
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -79,11 +83,22 @@ jobs:
       - name: Build Windows packages
         run: npm run build:win
 
+      - name: Verify Windows executables
+        shell: powershell
+        run: |
+          $exeFiles = Get-ChildItem -LiteralPath release -Filter *.exe -File -ErrorAction Stop
+          if (-not $exeFiles) {
+            throw "Es wurden keine EXE-Dateien im release-Ordner gefunden."
+          }
+          $exeFiles | Select-Object Name, Length | Format-Table -AutoSize
+
       - name: Upload Windows artifacts
         uses: actions/upload-artifact@v4
         with:
           name: windows-exe
-          path: release/*.exe
+          path: |
+            release/*.exe
+            release/win-unpacked/**
 
   publish-release:
     runs-on: ubuntu-latest
@@ -124,4 +139,4 @@ jobs:
             artifacts/android/app-debug.apk \
             artifacts/windows/*.exe \
             --title "${{ steps.meta.outputs.name }}" \
-            --notes "Automatisch gebaut aus dem GitHub-Repository. Android-Datei ist aktuell eine Debug-APK."
+            --notes "Automatisch gebaut aus dem GitHub-Repository. Android-Datei ist aktuell eine Debug-APK. Windows-Artefakte sind nicht signiert."

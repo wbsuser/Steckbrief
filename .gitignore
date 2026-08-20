@@ -3,3 +3,7 @@ dist/
 release/
 android/
 out/
+.npm-cache/
+.localappdata/
+.electron-builder-cache/
+.electron-cache/
