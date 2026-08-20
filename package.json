@@ -1,0 +1,37 @@
+{
+  "name": "minisoftware-rhein",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Mini-Software der Gruppe Rhein fuer einen KI-Use-Case-Steckbrief.",
+  "main": "electron/main.js",
+  "scripts": {
+    "prepare:web": "node scripts/prepare-web.mjs",
+    "start:electron": "npm run prepare:web && electron .",
+    "build:win": "npm run prepare:web && electron-builder --win nsis portable --publish never",
+    "prepare:android": "npm run prepare:web && npx cap add android --no-sync && npx cap sync android"
+  },
+  "build": {
+    "appId": "de.wbs.gruppe.rhein.steckbrief",
+    "productName": "Use-Case-Steckbrief",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    }
+  },
+  "devDependencies": {
+    "@capacitor/android": "^7.0.0",
+    "@capacitor/cli": "^7.0.0",
+    "electron": "^37.0.0",
+    "electron-builder": "^26.0.0"
+  }
+}

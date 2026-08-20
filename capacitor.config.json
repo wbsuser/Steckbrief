@@ -1,0 +1,6 @@
+{
+  "appId": "de.wbs.gruppe.rhein.steckbrief",
+  "appName": "Use-Case-Steckbrief",
+  "webDir": "dist",
+  "bundledWebRuntime": false
+}
