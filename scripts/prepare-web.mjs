@@ -11,7 +11,8 @@ const filesToCopy = [
   'index.html',
   'site.webmanifest',
   'sw.js',
-  'icon.svg'
+  'icon.svg',
+  'logo-mema.png'
 ];
 
 await rm(distDir, { recursive: true, force: true });
