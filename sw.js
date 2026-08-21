@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gruppe-rhein-steckbrief-v1';
+const CACHE_NAME = 'gruppe-rhein-steckbrief-v2';
 const ASSETS = [
   './',
   './index.html',
